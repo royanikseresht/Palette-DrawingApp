@@ -20,6 +20,7 @@ function setup() {
     toolbox.addTool(new EllipseTool());
     toolbox.addTool(new RectangleTool());
     toolbox.addTool(new LineToTool());
+    toolbox.addTool(new ScissorsTool());
     toolbox.addTool(new SprayCan());
     toolbox.addTool(new mirrorDrawTool());
     toolbox.addTool(new SparkleTool());
