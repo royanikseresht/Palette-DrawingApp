@@ -54,12 +54,13 @@ function ScissorsTool() {
     };
 
     this.mousePressed = function () {
+        console.log("ScissorsTool mousePressed is active");  // Debugging line
         if (pasting && selectImg && this.mousePressOnCanvas(this.c)) {
-            // Finalize pasting when mouse is pressed
             image(selectImg, mouseX - selectImg.width / 2, mouseY - selectImg.height / 2);
             pasting = false;
         }
     };
+
 
     this.populateOptions = function () {
         // Populate options in the UI
@@ -80,11 +81,20 @@ function ScissorsTool() {
         const pasteBtn = createButton("Paste");
         pasteBtn.class("tool-btn");
         pasteBtn.parent("#generalBtns");
+
+        // Update the button state based on whether an image is selected
         pasteBtn.mousePressed(() => {
             if (selectImg) {
                 pasting = true;
+                pasteBtn.attribute("disabled", true);  // Disable button once paste starts
+                setTimeout(() => {
+                    pasteBtn.removeAttribute("disabled");  // Re-enable button after pasting
+                }, 100);  // Disable the button for a short time after pressing, to avoid repeated pasting
+            } else {
+                console.log("No image selected for pasting.");  // Optional debug log
             }
         });
+
 
         const resetBtn = createButton("Reset Selection");
         resetBtn.class("tool-btn");
@@ -110,16 +120,11 @@ function ScissorsTool() {
     };
 
     this.unselectTool = function () {
-        // Reset tool state and UI
-        selectRect = { x: 0, y: 0, w: 0, h: 0 };
-        selectImg = null;
-        pasting = false;
-        startMouseX = -1;
-        startMouseY = -1;
+        console.log("ScissorsTool unselected");
         selecting = false;
-
-        // Clear any active drawing or selection
-        updatePixels(); // Revert canvas to its saved state
-        select(".options").html(""); // Clear tool-specific options
+        pasting = false;
+        selectImg = null;
+        updatePixels();
+        select(".options").html(""); // Remove UI elements if any
     };
 }

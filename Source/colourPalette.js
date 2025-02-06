@@ -1,69 +1,76 @@
-//colourPalette.js
-//Displays and handles the colour palette.
-function ColourPalette() {
-	// A more complete list of colors, now including all colors of the rainbow.
-	this.colours = [
-		"red",        // Red
-		"yellow",     // Yellow
-		"green",      // Green
-		"blue",       // Blue
-		"indigo",     // Indigo
-		"violet",     // Violet
-		"pink",       // Pink
-		"fuchsia",    // Fuchsia
-		"purple",     // Purple
-		"lime",       // Lime
-		"cyan",       // Cyan (another blue-green color)
-		"black"      // Black (neutral color)
-	];
-	
-	// Initialize the selected color as black
-	this.selectedColour = "black";
+class ColourPalette {
+    constructor() {
+        this.selectedColour = "#000000"; // Default color
+        this.selectedSize = 2; // Default pen size
+        this.createPalette();
+    }
 
-	var self = this;
+    createPalette() {
+        const paletteContainer = document.querySelector(".colourPalette");
 
-	var colourClick = function() {
-		// Remove the old border
-		var current = select("#" + self.selectedColour + "Swatch");
-		current.style("border", "0");
+        if (!paletteContainer) {
+            console.error("Error: .colourPalette container not found!");
+            return;
+        }
+        
+        // Prevent creating the palette if it already exists
+        if (document.querySelector('.colorPickerContainer')) {
+            return; // Exit if the color picker already exists
+        }
 
-		// Get the new color from the ID of the clicked element
-		var c = this.id().split("Swatch")[0];
+        // Create a container for the color picker
+        const colorPickerContainer = document.createElement("div");
+        colorPickerContainer.classList.add("colorPickerContainer");
+        paletteContainer.appendChild(colorPickerContainer);
 
-		// Set the selected color and update fill and stroke properties
-		self.selectedColour = c;
-		fill(c);
-		stroke(c);
+        // Create a label for color picker
+        const colorLabel = document.createElement("p");
+        colorLabel.textContent = "Select Color:";
+        colorPickerContainer.appendChild(colorLabel);
 
-		// Add a new border to the selected color
-		this.style("border", "2px solid blue");
-	}
+        // Create an input color picker
+        this.colorPicker = document.createElement("input");
+        this.colorPicker.type = "color";
+        this.colorPicker.value = this.selectedColour;
+        this.colorPicker.classList.add("colorPicker");
+        this.colorPicker.addEventListener("input", () => this.updateColour());
+        colorPickerContainer.appendChild(this.colorPicker);
 
-	// Load in the colors
-	this.loadColours = function() {
-		// Set the initial color to black
-		fill(this.colours[0]);
-		stroke(this.colours[0]);
+        // Create a container for the pen size slider
+        const sizeContainer = document.createElement("div");
+        sizeContainer.classList.add("sizeContainer");
+        paletteContainer.appendChild(sizeContainer);
 
-		// For each color, create a new div in the HTML for the color swatches
-		for (var i = 0; i < this.colours.length; i++) {
-			var colourID = this.colours[i] + "Swatch";
+        // Create a label for pen size
+        this.sizeLabel = document.createElement("p");
+        this.sizeLabel.textContent = "Pen Size: " + this.selectedSize;
+        sizeContainer.appendChild(this.sizeLabel);
 
-			// Using p5.dom, add the swatch to the palette and set its background color
-			var colourSwatch = createDiv();
-			colourSwatch.class('colourSwatches');
-			colourSwatch.id(colourID);
+        // Create a slider for pen size selection
+        this.sizeSlider = document.createElement("input");
+        this.sizeSlider.type = "range";
+        this.sizeSlider.min = 1;
+        this.sizeSlider.max = 20;
+        this.sizeSlider.value = this.selectedSize;
+        this.sizeSlider.addEventListener("input", () => this.updatePenSize());
+        sizeContainer.appendChild(this.sizeSlider);
+    }
 
-			// Add the swatch to the color palette in the HTML
-			select(".colourPalette").child(colourSwatch);
-			select("#" + colourID).style("background-color", this.colours[i]);
-			colourSwatch.mouseClicked(colourClick);
-		}
+    updateColour() {
+        this.selectedColour = this.colorPicker.value;
+        fill(this.selectedColour);
+        stroke(this.selectedColour);
+    }
 
-		// Apply the selected swatch border on load
-		select(".colourSwatches").style("border", "2px solid blue");
-	};
-
-	// Call the loadColours function now it is declared
-	this.loadColours();
+    updatePenSize() {
+        this.selectedSize = this.sizeSlider.value;
+        this.sizeLabel.textContent = "Pen Size: " + this.selectedSize;
+        strokeWeight(this.selectedSize);
+    }
 }
+
+// Create an instance of ColourPalette
+window.addEventListener('DOMContentLoaded', (event) => {
+    const colourPalette = new ColourPalette();
+});
+

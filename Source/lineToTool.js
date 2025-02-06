@@ -37,4 +37,10 @@ function LineToTool(){
 			startMouseY = -1;
 		}
 	};
+    
+    this.unselectTool = function() {
+		updatePixels();
+		//clear options
+		select(".options").html("");
+	};
 }

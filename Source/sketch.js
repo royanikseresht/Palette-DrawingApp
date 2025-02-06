@@ -20,15 +20,18 @@ function setup() {
     toolbox.addTool(new EllipseTool());
     toolbox.addTool(new RectangleTool());
     toolbox.addTool(new LineToTool());
-    toolbox.addTool(new ScissorsTool());
     toolbox.addTool(new SprayCan());
     toolbox.addTool(new mirrorDrawTool());
     toolbox.addTool(new SparkleTool());
     toolbox.addTool(new CircleDrawingGameTool());
     toolbox.addTool(new EditableShapesTool());
     toolbox.addTool(new ShapeMemoryGameTool());
+    toolbox.addTool(new ImageTool());
     toolbox.addTool(new ArtGeneratorTool());
     toolbox.addTool(new RandomArtTool());
+    toolbox.addTool(new ScissorsTool());
+    
+
 
     // Debug: Log all tools
     console.log("Tools added to toolbox:", toolbox.tools.map((tool) => tool.name));

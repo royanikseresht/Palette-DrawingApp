@@ -120,20 +120,26 @@ function mirrorDrawTool() {
 	//adds a button and click handler to the options area. When clicked
 	//toggle the line of symmetry between horizonatl to vertical
 	this.populateOptions = function() {
-		select(".options").html(
-			"<button id='directionButton'>Make Horizontal</button>");
-		// 	//click handler
-		select("#directionButton").mouseClicked(function() {
-			var button = select("#" + this.elt.id);
-			if (self.axis == "x") {
-				self.axis = "y";
-				self.lineOfSymmetry = height / 2;
-				button.html('Make Vertical');
-			} else {
-				self.axis = "x";
-				self.lineOfSymmetry = width / 2;
-				button.html('Make Horizontal');
-			}
-		});
-	};
+        // Create a container for buttons
+        select(".options").html("<div id='generalBtns'></div>");
+
+        // Create the button and place it inside the container
+        var button = createButton("Make Horizontal");
+        button.id("directionButton");
+        button.parent("#generalBtns"); // Move the button into the styled div
+
+        // Click handler
+        button.mouseClicked(function() {
+            if (self.axis == "x") {
+                self.axis = "y";
+                self.lineOfSymmetry = height / 2;
+                button.html("Make Vertical");
+            } else {
+                self.axis = "x";
+                self.lineOfSymmetry = width / 2;
+                button.html("Make Horizontal");
+            }
+        });
+    };
+
 }
