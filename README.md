@@ -33,13 +33,13 @@ This project is a feature-rich drawing application that combines creativity with
    - Incorporates timers and geometric accuracy checks for feedback.  
 
 #### **User Interface**  
-![App Interface Design](assets/light-design.jpeg)
+![App Interface Design](assets/light.png)
 - **Responsive Layout**: Grid-based design featuring:  
    - **Sidebar**: Tool selection.  
    - **Color Palette**: For color customization.  
    - **Header Options**: Clear canvas, Save Image, and Dark Mode toggles.  
 - **Dark Mode**: A toggleable dark mode for improved accessibility and user comfort during extended sessions.
-- ![Dark Mode Design](assets/dark-design.jpeg)
+- ![Dark Mode Design](assets/dark.png)
 
 ---
 
