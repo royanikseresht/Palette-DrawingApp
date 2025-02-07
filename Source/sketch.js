@@ -17,12 +17,15 @@ function setup() {
 
     // Add tools to the toolbox
     toolbox.addTool(new FreehandTool());
+    toolbox.addTool(new DottedBrushTool());
+    toolbox.addTool(new StarBrushTool());
     toolbox.addTool(new EllipseTool());
     toolbox.addTool(new RectangleTool());
     toolbox.addTool(new LineToTool());
     toolbox.addTool(new SprayCan());
     toolbox.addTool(new mirrorDrawTool());
-    toolbox.addTool(new SparkleTool());
+    toolbox.addTool(new TextTool());
+    toolbox.addTool(new HeartTool());
     toolbox.addTool(new CircleDrawingGameTool());
     toolbox.addTool(new EditableShapesTool());
     toolbox.addTool(new ShapeMemoryGameTool());
@@ -30,6 +33,7 @@ function setup() {
     toolbox.addTool(new ArtGeneratorTool());
     toolbox.addTool(new RandomArtTool());
     toolbox.addTool(new ScissorsTool());
+    toolbox.addTool(new EraserTool());
     
 
 

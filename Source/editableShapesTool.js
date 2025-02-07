@@ -59,11 +59,11 @@ function EditableShapesTool(){
     //adds buttons to enable editing 
 	this.populateOptions = function() {
         // create a tag under options
-        select(".options").html("<div id='editBtns'></div>");
+        select(".options").html("<div id='generalBtns'></div>");
   
         // add panda slider
         editBtn = createButton('Edit Shape')
-        editBtn.parent("#editBtns");
+        editBtn.parent("#generalBtns");
 
         editBtn.mousePressed(()=>{
             if(this.editMode){
@@ -76,7 +76,7 @@ function EditableShapesTool(){
         })
 
         finishBtn = createButton('Finish shape')
-        finishBtn.parent("#editBtns");
+        finishBtn.parent("#generalBtns");
 
         // add event for finish btn
         finishBtn.mousePressed(()=>{
@@ -91,7 +91,7 @@ function EditableShapesTool(){
     //when the tool is deselected clear options
     this.unselectTool = function() {
         //clear options
-        select("#editBtns").html("");
+        select("#generalBtns").html("");
 
         //reset currentshape
         this.currentShape = []

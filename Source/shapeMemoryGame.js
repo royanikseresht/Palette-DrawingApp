@@ -137,16 +137,16 @@ text("Hold SHIFT to draw rectangles, release SHIFT to draw circles.", width / 2,
 
     // Populate options for starting and resetting the game
     this.populateOptions = function () {
-        select(".options").html("<div id='shapeMemoryBtns'></div>");
+        select(".options").html("<div id='generalBtns'></div>");
 
         const startBtn = createButton("Start Memory Game");
-        startBtn.parent("#shapeMemoryBtns");
+        startBtn.parent("#generalBtns");
         startBtn.mousePressed(() => {
             this.startGame();
         });
 
         const finishBtn = createButton("Finish and Score");
-        finishBtn.parent("#shapeMemoryBtns");
+        finishBtn.parent("#generalBtns");
         finishBtn.mousePressed(() => {
             let finalScore = this.calculateScore();
             alert(`Your final score is: ${finalScore}/100`);
@@ -156,7 +156,7 @@ text("Hold SHIFT to draw rectangles, release SHIFT to draw circles.", width / 2,
     // Clear options when tool is deselected
     this.unselectTool = function () {
         background(255);
-        select("#shapeMemoryBtns").html("");
+        select("#generalBtns").html("");
         this.shapes = [];
         this.userShapes = [];
         this.timer = 0;

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+      
+      
     <script src="lib/p5.min.js"></script>
     <script src="lib/p5.dom.js"></script>
 
@@ -12,6 +15,7 @@
     <script src="Source/helperFunctions.js"></script>
 
     <script src="Source/freehandTool.js"></script>
+    <script src="Source/eraserTool.js"></script>
     <script src="Source/lineToTool.js"></script>
     <script src="Source/mirrorDrawTool.js"></script>
     <script src="Source/sprayCanTool.js"></script>
@@ -21,16 +25,36 @@
     <script src="Source/colorPalette.js"></script>
     <script src="Source/artGenerator.js"></script>
     <script src="Source/randomArtGenerator.js"></script>
-    <script src="Source/sparkleTool.js"></script>
     <script src="Source/circleDrawGame.js"></script>
-      <script src="Source/shapeMemoryGame.js"></script>
-    
+    <script src="Source/shapeMemoryGame.js"></script>
+    <script src="Source/scissorsTool.js"></script>
+    <script src="Source/imageTool.js"></script>
+    <script src="Source/textTool.js"></script>
+    <script src="Source/heartTool.js"></script>
+    <script src="Source/dottedBrushTool.js"></script>
+    <script src="Source/startBrushTool.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
   	<div class="wrapper">
-      <div class="box header">Palette
+      <div class="box header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="5000" height="4000" viewBox="0 0 5000 4000">
+            <defs>
+                <!-- Gradient Definition -->
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color: #ff7f7f; stop-opacity: 1" />
+                    <stop offset="100%" style="stop-color: #ff80ff; stop-opacity: 1" />
+                </linearGradient>
+            </defs>
+            <!-- Extra-Large Stylish Text with Gradient -->
+            <text x="50%" y="90%" dominant-baseline="middle" text-anchor="middle" 
+                  font-family="Playfair Display, serif" font-size="4000" font-weight="700" 
+                  fill="url(#gradient)">
+                R
+            </text>
+        </svg>
+
 
         <button id="clearButton">Clear</button>
         <button id="saveImageButton">Save Image</button>
@@ -41,6 +65,7 @@
       <div id="content"></div>
       <div class="box colourPalette"></div>
       <div class="box options"></div>
+        
 	</div>
       <script src="Source/darkMode.js"></script>
   </body>

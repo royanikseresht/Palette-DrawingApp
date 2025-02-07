@@ -93,11 +93,11 @@ function CircleDrawingGameTool() {
     // Adds buttons to reset and start a new game
     this.populateOptions = function () {
         // Create a container for buttons
-        select(".options").html("<div id='circleGameBtns'></div>");
+        select(".options").html("<div id='generalBtns'></div>");
 
         // Button to start a new challenge
         const newChallengeBtn = createButton("New Circle Challenge");
-        newChallengeBtn.parent("#circleGameBtns");
+        newChallengeBtn.parent("#generalBtns");
         newChallengeBtn.mousePressed(() => {
             this.generatePerfectCircle();
             this.score = null;
@@ -106,7 +106,7 @@ function CircleDrawingGameTool() {
 
         // Button to clear the canvas
         const clearBtn = createButton("Clear Canvas");
-        clearBtn.parent("#circleGameBtns");
+        clearBtn.parent("#generalBtns");
         clearBtn.mousePressed(() => {
             this.score = null;
             this.perfectCircle = null;
@@ -116,7 +116,7 @@ function CircleDrawingGameTool() {
 
     // Clear options when the tool is deselected
     this.unselectTool = function () {
-        select("#circleGameBtns").html("");
+        select("#generalBtns").html("");
         this.startX = null;
         this.startY = null;
         this.isDrawing = false;
