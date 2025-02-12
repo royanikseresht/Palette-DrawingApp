@@ -1,3 +1,4 @@
+//scissorsTool.js
 function ScissorsTool() {
     this.icon = "assets/scissors.png";
     this.name = "Scissors";
@@ -43,23 +44,20 @@ function ScissorsTool() {
         }
 
         if (pasting && selectImg) {
-            
-            // Handle image pasting
             updatePixels(); // Clear leftover pixels
-            noTint();
-            rect(startMouseX, startMouseY, currentMouseX - startMouseX, currentMouseY - startMouseY);
             image(selectImg, mouseX - selectImg.width / 2, mouseY - selectImg.height / 2);
-            
         }
+
     };
 
     this.mousePressed = function () {
-        console.log("ScissorsTool mousePressed is active");  // Debugging line
         if (pasting && selectImg && this.mousePressOnCanvas(this.c)) {
             image(selectImg, mouseX - selectImg.width / 2, mouseY - selectImg.height / 2);
-            pasting = false;
+            pasting = false;  // Ensure pasting stops
+            selectImg = null; // Reset selection after pasting
         }
     };
+
 
 
     this.populateOptions = function () {
@@ -69,14 +67,22 @@ function ScissorsTool() {
         const cutBtn = createButton("Cut");
         cutBtn.class("tool-btn");
         cutBtn.parent("#generalBtns");
+        
         cutBtn.mousePressed(() => {
             if (selectRect.w > 0 && selectRect.h > 0) {
                 selectImg = get(selectRect.x, selectRect.y, selectRect.w, selectRect.h);
-                noStroke();
-                fill(255);
-                rect(selectRect.x, selectRect.y, selectRect.w, selectRect.h); // Clear selected area
+
+                // Correct way to erase the selection
+                loadPixels();  // Save current state
+                for (let i = selectRect.x; i < selectRect.x + selectRect.w; i++) {
+                    for (let j = selectRect.y; j < selectRect.y + selectRect.h; j++) {
+                        set(i, j, color(255, 255, 255));  // Set pixels to white
+                    }
+                }
+                updatePixels();  // Apply changes
             }
         });
+
 
         const pasteBtn = createButton("Paste");
         pasteBtn.class("tool-btn");
@@ -86,14 +92,12 @@ function ScissorsTool() {
         pasteBtn.mousePressed(() => {
             if (selectImg) {
                 pasting = true;
-                pasteBtn.attribute("disabled", true);  // Disable button once paste starts
-                setTimeout(() => {
-                    pasteBtn.removeAttribute("disabled");  // Re-enable button after pasting
-                }, 100);  // Disable the button for a short time after pressing, to avoid repeated pasting
+                pasteBtn.attribute("disabled", true);  // Disable during pasting
             } else {
-                console.log("No image selected for pasting.");  // Optional debug log
+                console.log("No image selected for pasting.");
             }
         });
+
 
 
         const resetBtn = createButton("Reset Selection");
@@ -109,15 +113,15 @@ function ScissorsTool() {
     };
 
     this.mousePressOnCanvas = function (canvas) {
-        // Validate mouse position within canvas bounds
         const bounds = canvas.elt.getBoundingClientRect();
         return (
-            mouseX > bounds.left &&
-            mouseX < bounds.right &&
-            mouseY > bounds.top &&
-            mouseY < bounds.bottom
+            mouseX > bounds.left + window.scrollX &&
+            mouseX < bounds.right + window.scrollX &&
+            mouseY > bounds.top + window.scrollY &&
+            mouseY < bounds.bottom + window.scrollY
         );
     };
+
 
     this.unselectTool = function () {
         console.log("ScissorsTool unselected");

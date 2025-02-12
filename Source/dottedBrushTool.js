@@ -1,4 +1,4 @@
-// DottedBrushTool.js
+// dottedBrushTool.js
 function DottedBrushTool(){
     // Set an icon and a name for the object
     this.icon = "assets/dottedbrush.png";
@@ -18,5 +18,9 @@ function DottedBrushTool(){
             noStroke();
             ellipse(mouseX + jitterX, mouseY + jitterY, dotSize, dotSize);
         }
+        // Reset fill and stroke state after drawing
+        fill(255); // Reset fill
+        stroke(0); // Reset stroke
+        strokeWeight(1); // Reset stroke weight
     };
 }

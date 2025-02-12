@@ -17,6 +17,7 @@ function setup() {
 
     // Add tools to the toolbox
     toolbox.addTool(new FreehandTool());
+    toolbox.addTool(new EraserTool());
     toolbox.addTool(new DottedBrushTool());
     toolbox.addTool(new StarBrushTool());
     toolbox.addTool(new EllipseTool());
@@ -33,10 +34,7 @@ function setup() {
     toolbox.addTool(new ArtGeneratorTool());
     toolbox.addTool(new RandomArtTool());
     toolbox.addTool(new ScissorsTool());
-    toolbox.addTool(new EraserTool());
     
-
-
     // Debug: Log all tools
     console.log("Tools added to toolbox:", toolbox.tools.map((tool) => tool.name));
 

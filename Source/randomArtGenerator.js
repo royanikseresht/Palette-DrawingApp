@@ -1,3 +1,4 @@
+//randomArtGenerator.js
 function RandomArtTool() {
     // Set an icon and a name for the tool
     this.icon = "assets/random.png";

@@ -1,10 +1,4 @@
-/*
-1. plot out shape as a series of vertices
-2. edit the shapre using mouse drag
-   * if editing mode is on, highlight the location of vertices
-
-*/
-
+//editableShapesTool.js
 function EditableShapesTool(){
 	//set an icon and a name for the object
 	this.icon = "assets/shape.png";

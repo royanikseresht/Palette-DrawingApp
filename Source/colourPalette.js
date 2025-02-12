@@ -1,3 +1,4 @@
+// colourPalette.js
 class ColourPalette {
     constructor() {
         this.selectedColour = "#000000"; // Default color

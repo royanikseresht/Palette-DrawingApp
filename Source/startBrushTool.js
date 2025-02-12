@@ -1,3 +1,4 @@
+//startBrushTool.js
 function StarBrushTool(){
     this.icon = "assets/starbrush.png";
     this.name = "starBrush";
@@ -14,6 +15,10 @@ function StarBrushTool(){
             
             drawStar(mouseX, mouseY, starSize, starSize / 2, 5);
         }
+        // Reset fill and stroke state after drawing
+        fill(255); // Reset fill
+        stroke(0); // Reset stroke
+        strokeWeight(1); // Reset stroke weight
     };
     
     function drawStar(x, y, radius1, radius2, npoints) {

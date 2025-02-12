@@ -1,3 +1,4 @@
+//sprayCanTool.js
 function SprayCan () {
     this.name = "sprayCanTool";
     this.icon = "assets/sprayCan.png";
@@ -19,5 +20,6 @@ function SprayCan () {
                 point(sprayX, sprayY);
             }
         }
+        noFill(); // Ensure no unwanted fill is left behind
     }
 };

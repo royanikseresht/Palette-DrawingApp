@@ -18,7 +18,7 @@ html, body {
 
     /* Add grid layout for two columns */
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Two equal-width columns */
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.5px; /* Space between items */
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -98,6 +98,51 @@ html, body {
     max-width: 250px;
 }
 
+
+
+.colourPalette:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Color Picker */
+.colorPicker {
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.colorPicker:hover {
+    background-color: #f3f3f3;
+    transform: scale(1.05);
+}
+
+/* Size Label */
+.sizeContainer p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.sizeContainer input[type="range"]:hover + p {
+    color: #de54b7;
+}
+
+/* Mobile-Friendly */
+@media (max-width: 768px) {
+    .colourPalette {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .colorPicker {
+        width: 80%;
+    }
+}
+
 /* Style the color picker container */
 .colorPickerContainer, .sizeContainer {
     width: 100%;
@@ -143,7 +188,6 @@ input[type="range"] {
 .sizeContainer p {
     display: none; /* Hides the pen size label */
 }
-
 
 .options{
 	grid-area: options;
@@ -223,7 +267,6 @@ input[type="range"] {
   #layer2Options > * {
   font-size: 0.875rem; /* Smaller text size for all child elements within the layers */
 }
-
 
 
 /* Dark Mode Styles */
@@ -478,4 +521,55 @@ select option {
 select option:checked {
     background-color: #de54b7;
     color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 12px 6px;
+    }
+    
+    .sideBarItem {
+        height: 60px;
+        width: 60px;
+    }
+
+    .header {
+        padding: 10px 15px;
+        font-size: 1.1rem;
+    }
+    
+    .footer {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .sideBarItem {
+        height: 80px;
+        width: 80px;
+        margin: 8px 0;
+    }
+
+    .header {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .footer {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
 }

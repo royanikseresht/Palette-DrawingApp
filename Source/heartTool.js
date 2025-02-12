@@ -1,6 +1,7 @@
+// heartTool.js
 function preload() {
     heart = loadImage("./assets/heart.png");
-    sparkle = loadImage("./assets/sparkle.png"); // Load sparkle image
+    sparkle = loadImage("./assets/sparkle.png");
 }
 
 function HeartTool() {

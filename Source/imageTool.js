@@ -1,3 +1,4 @@
+// imageTool.js
 function ImageTool() {
     this.icon = "assets/camera.png";
     this.name = "imageTool";

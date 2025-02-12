@@ -1,3 +1,4 @@
+// eraserTool.js
 function EraserTool() {
     this.icon = "assets/eraser.png";
     this.name = "Eraser";
@@ -10,6 +11,10 @@ function EraserTool() {
             strokeWeight(this.eraserSize);
             line(pmouseX, pmouseY, mouseX, mouseY);
         }
+        // Reset fill and stroke state after drawing
+        fill(255); // Reset fill
+        stroke(0); // Reset stroke
+        strokeWeight(1); // Reset stroke weight
     };
 
     this.populateOptions = function() {
